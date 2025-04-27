@@ -168,33 +168,6 @@ if not channel_stats_df.empty:
             )
 
             st.plotly_chart(fig, use_container_width=True)
-        
-        # Display metadata
-        st.subheader("Channel Metadata")
-        
-        # Create a clean metadata dataframe for display
-        metadata_df = channel_stats_df[["title", "firm_type", "target_audience", "content_type", "has_legacy_media"]].copy()
-        
-        # Format the target_audience column to display as comma-separated string
-        metadata_df['target_audience'] = metadata_df['target_audience'].apply(
-            lambda x: ', '.join(x) if isinstance(x, list) else x
-        )
-        
-        # Rename columns for better display
-        metadata_df.columns = [
-            'Channel Name',
-            'Firm Type',
-            'Target Audience',
-            'Content Type',
-            'Has Legacy Media'
-        ]
-        
-        # Display the table
-        st.dataframe(
-            metadata_df,
-            use_container_width=True,
-            hide_index=True
-        )
 else:
     st.warning("No channel statistics found. Please analyze some channels first.")
 
@@ -310,6 +283,34 @@ with col2:
     )
     
     st.plotly_chart(fig, use_container_width=True)
+
+
+        # Display metadata
+st.subheader("Channel Metadata")
+        
+        # Create a clean metadata dataframe for display
+metadata_df = channel_stats_df[["title", "firm_type", "target_audience", "content_type", "has_legacy_media"]].copy()
+        
+        # Format the target_audience column to display as comma-separated string
+metadata_df['target_audience'] = metadata_df['target_audience'].apply(
+    lambda x: ', '.join(x) if isinstance(x, list) else x
+)
+        
+# Rename columns for better display
+metadata_df.columns = [
+    'Channel Name',
+    'Firm Type',
+    'Target Audience',
+    'Content Type',
+    'Has Legacy Media'
+]
+
+# Display the table
+st.dataframe(
+    metadata_df,
+    use_container_width=True,
+    hide_index=True
+)
 
 # Add a debug button in the sidebar
 if st.sidebar.button("Debug API Connection"):
