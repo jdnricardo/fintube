@@ -35,10 +35,11 @@ st.markdown("""
 
 st.header("Next steps")
 st.markdown("""
-    - Pare down content output to focus on the most engaging videos
+    - Pare down content output to focus on most engaging videos; your engagement metrics do not support the current burn rate / upload frequency
     - With your authorization, integrate with YouTube Analytics API for more granular engagement metrics like watch time and click-through rates
     - Monitor metrics over time to understand how market performance, sentiment, and/or volatility correlate with your channel's performance, if at all
     - Factor in the additional resources needed for research, disclosures, and legal review when determining content frequency
+    - Consider if Youtube is a good fit for your firm's intended audience, or more of a nice-to-have communications channel
     """)
 
 # Why This Matters Now
