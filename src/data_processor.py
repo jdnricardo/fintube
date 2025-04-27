@@ -243,16 +243,3 @@ class DataProcessor:
             DELETE FROM channel_stats 
             WHERE channel_id IN ('{channel_ids_str}')
         """)
-
-    def calculate_derived_metrics(self):
-        """Calculate derived metrics for video_stats."""
-        self.conn.execute("""
-            SELECT
-                *,
-                CASE WHEN view_count > 0 THEN like_count * 1.0 / view_count ELSE NULL END AS like_ratio,
-                CASE WHEN view_count > 0 THEN comment_count * 1.0 / view_count ELSE NULL END AS comment_ratio,
-                (like_count + comment_count) * 1.0 / NULLIF(view_count, 0) AS engagement_score,
-                datediff('day', published_at, current_date) AS video_age_days,
-                view_count * 1.0 / NULLIF(datediff('day', published_at, current_date), 0) AS views_per_day
-            FROM video_stats
-        """) 
