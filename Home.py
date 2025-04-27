@@ -1,6 +1,6 @@
 import streamlit as st
 from pathlib import Path
-from auth import check_password
+from src.auth import check_password
 
 # Page config
 st.set_page_config(

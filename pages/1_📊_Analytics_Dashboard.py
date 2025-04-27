@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import sys
 from pathlib import Path
-from auth import check_password
+from src.auth import check_password
 
 if not check_password():
     st.stop()
