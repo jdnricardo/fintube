@@ -2,8 +2,11 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import sys
-import os
 from pathlib import Path
+from auth import check_password
+
+if not check_password():
+    st.stop()
 
 # Add the src directory to the Python path
 sys.path.append(str(Path(__file__).parent.parent / "src"))

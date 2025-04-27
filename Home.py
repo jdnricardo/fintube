@@ -1,7 +1,6 @@
 import streamlit as st
-import pandas as pd
-import plotly.graph_objects as go
 from pathlib import Path
+from auth import check_password
 
 # Page config
 st.set_page_config(
@@ -9,6 +8,9 @@ st.set_page_config(
     page_icon="📊",
     layout="wide"
 )
+
+if not check_password():
+    st.stop()
 
 # Main content
 st.title("Building a Financial Services Youtube Channel")
