@@ -127,6 +127,7 @@ if not channel_stats_df.empty:
         "Select metrics to compare",
         metrics,
         default=["subscriber_count", 
+                 "channel_age_days",
                  "subscriber_view_ratio", 
                  "videos_per_month", 
                  "avg_views_per_video"]
