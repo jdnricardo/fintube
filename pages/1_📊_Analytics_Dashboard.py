@@ -29,10 +29,16 @@ DEFAULT_CHANNELS = [
 # Initialize API and data processor
 @st.cache_resource(ttl=0)  # Set TTL to 0 to disable caching
 def init_resources():
-    st.write("Initializing resources...")
     return YouTubeAPI(), DataProcessor(), MarketData()
 
+# Create a temporary message that will be cleared
+init_message = st.empty()
+init_message.write("Initializing resources...")
+
 youtube_api, data_processor, market_data = init_resources()
+
+# Clear the initialization message
+init_message.empty()
 
 # Initialize session state for tracking channels
 if 'current_channels' not in st.session_state:
